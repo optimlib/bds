@@ -78,8 +78,7 @@ jobs:
               addpath(fullfile(root_dir, 'tests'));
               cd(fullfile(root_dir, 'tests', 'tuning'));
               parameters.grad_window_size = [1 1e8];
-              parameters.grad_tol_1 = [1e-6 1e-30];
-              parameters.grad_tol_2 = [1e-9 1e-30];
+              parameters.grad_tol = [1e-6 1e-30];
               options = struct();
               options.solver_names = {'cbds-grad', 'cbds-default'};
               options.plibs = '${{ matrix.plibs }}';
