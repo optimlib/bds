@@ -1,4 +1,4 @@
-name: Profile original cbds with original cbds auto alpha init, small, s2mpj
+name: Profile original cbds with smart alpha init, big, s2mpj
 
 on:
   # Trigger the workflow on # push or pull request
@@ -10,17 +10,17 @@ on:
 
 jobs:
   test:
-    name: Profile original cbds with original cbds auto alpha init, small, s2mpj
+    name: Profile original cbds with smart alpha init, big, s2mpj
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
         matlab: [latest]
-        dim: [small]
+        dim: [big]
         with_optim_toolbox: [yes]
         solver: [cbds-orig]
-        competitor: [cbds-orig-alpha-init-auto]
+        competitor: [cbds-orig-smart-alpha-init]
         plibs: [s2mpj]
         run_plain: [false]
         summarize_log_ratio_profiles: [false]

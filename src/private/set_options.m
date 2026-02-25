@@ -198,7 +198,7 @@ if isfield(options, "alpha_init")
         options.alpha_init = options.alpha_init * ones(options.num_blocks, 1);
     elseif length(options.alpha_init) == options.num_blocks
         options.alpha_init = options.alpha_init(:);
-    elseif strcmpi(options.alpha_init,"auto")
+    elseif strcmpi(options.alpha_init, "auto")
         alpha_init = zeros(n, 1);
         for i = 1:n
             if x0(i) ~= 0
