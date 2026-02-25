@@ -194,8 +194,8 @@ end
 % This option assumes the default direction set [e_1, -e_1, ..., e_n, -e_n], ordered by
 % coordinates 1, 2, ..., n, with [e_i, -e_i] treated as one block.
 if isfield(options, "alpha_init")
-    % if isscalar(options.alpha_init)
-    %     options.alpha_init = options.alpha_init * ones(options.num_blocks, 1);
+    if isscalar(options.alpha_init)
+        options.alpha_init = options.alpha_init * ones(options.num_blocks, 1);
     % elseif length(options.alpha_init) == options.num_blocks
     %     options.alpha_init = options.alpha_init(:);
     % elseif strcmpi(options.alpha_init, "auto")
@@ -213,17 +213,20 @@ if isfield(options, "alpha_init")
     %     error('BDS:set_options:InvalidAlphaInitLength', ...
     %         'Length of options.alpha_init must match options.num_blocks if it is a vector.');
     % end
-    if strcmpi(options.alpha_init, "auto")
-        % Calculate Smart Alpha
-        alpha_vec = zeros(n, 1);
-        for i = 1:n
-            if x0(i) ~= 0
-                alpha_vec(i) = max(abs(x0(i)), options.StepTolerance(i));
-            else
-                alpha_vec(i) = 1;
+    elseif strcmpi(options.alpha_init, "auto")
+            % Calculate Smart Alpha
+            alpha_vec = zeros(n, 1);
+            for i = 1:n
+                if x0(i) ~= 0
+                    alpha_vec(i) = max(abs(x0(i)), options.StepTolerance(i));
+                else
+                    alpha_vec(i) = 1;
+                end
             end
-        end
-        options.alpha_init = alpha_vec;
+            options.alpha_init = alpha_vec;
+    else
+        error('BDS:set_options:InvalidAlphaInit', ...
+            'options.alpha_init must be a positive scalar, a vector of length options.num_blocks, or "auto".');
     end
 else
     options.alpha_init = ones(options.num_blocks, 1);
