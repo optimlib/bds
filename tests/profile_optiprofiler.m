@@ -750,7 +750,7 @@ function x = pbds_orig_test(fun, x0)
     option.Algorithm = 'pbds';
     option.expand = 2;
     option.shrink = 0.5;
-    option.permuting_period = 0;
+    option.Algorithm = 'pbds';
     x = bds(fun, x0, option);
     
 end
