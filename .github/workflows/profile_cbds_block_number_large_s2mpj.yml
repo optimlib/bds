@@ -24,7 +24,7 @@ jobs:
         competitor_2: [cbds-quarter]
         competitor_3: [cbds-eighth]
         competitor_4: [ds-block]
-        plib: [s2mpj]
+        plibs: [s2mpj]
         run_plain: [false]
         summarize_log_ratio_profiles: [false]
         feature: [plain, noisy_1e-1, noisy_1e-2, noisy_1e-3, noisy_1e-4, linearly_transformed, rotation_noisy_1e-1, rotation_noisy_1e-2, rotation_noisy_1e-3, rotation_noisy_1e-4]
@@ -85,7 +85,7 @@ jobs:
               options.feature_name = '${{ matrix.feature }}';
               options.solver_names = {'${{ matrix.solver }}', '${{ matrix.competitor_1 }}', '${{ matrix.competitor_2 }}', '${{ matrix.competitor_3 }}', '${{ matrix.competitor_4 }}'};
               options.dim = '${{ matrix.dim }}';
-              options.plib = '${{ matrix.plib }}';
+              options.plibs = '${{ matrix.plibs }}';
               options.run_plain = ${{ matrix.run_plain }};
               options.summarize_log_ratio_profiles = ${{ matrix.summarize_log_ratio_profiles }};
               options.test_blocks = true;
