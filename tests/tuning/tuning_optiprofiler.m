@@ -689,9 +689,9 @@ function benchmark_id = append_param_to_id(benchmark_id, param_name, param_value
     end
     param_str = num2str(param_value, format);
     if strcmp(param_name, 'expand')
-        param_str = strrep(param_str, '.', '');
+        param_str = strrep(param_str, '.', 'x');
     elseif strcmp(param_name, 'shrink')
-        param_str = param_str(3:end); % Remove '0.'
+        param_str = strrep(param_str, '.', 'x');
     elseif strcmp(param_name, 'maxfun_factor')
         param_str = sprintf('%d', round(param_value));
     elseif contains(param_name, 'tol')
